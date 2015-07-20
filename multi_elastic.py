@@ -18,8 +18,10 @@ data_frame_file_path = 'masked_matrices.pickle'
 
 alpha_range = np.logspace(-10,4,30)
 alpha_range = np.array([alpha_range])
+alpha_range = alpha_range[alpha_range != 0]
 
 gamma_range = np.logspace(-15,5,50)
+gamma_range = gamma_range[gamma_range != 0]
 
 
 mode = ('kmean','fa','dmean')
