@@ -204,7 +204,7 @@ def build_matrix(masked_matrices,modes):
 def zscore_mag_div_matrix(mat):
     for col in xrange(mat.shape[1]):
         if col % 50000 == 0:
-            print col
+            print ' {}% done'.format(np.round(float(col)/float(mat.shape[1]),2)* 100)
         mat[:,col] = zscore(mat[:,col]) 
         mat[:,col] = mat[:,col] / np.sqrt( sum( [ x**2 for x in mat[:,col] ] ) )
     return mat
@@ -306,7 +306,7 @@ def coefs_mask(coefs,resampled_mask):
             c = l_coefs.pop(0)
             z_mask[i] += c
     z_mask = z_mask.reshape(resampled_mask.shape)
-    aff = nib.load('/home/nick/Desktop/dki_stuff/modalities/dmean/dmeanCON001.nii').get_affine()
+    aff = nib.load('/home/desistonv/dmeanPAT100.nii').get_affine()
     finished_mask = nib.Nifti1Image(z_mask,affine=aff)
     return finished_mask
 
