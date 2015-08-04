@@ -204,7 +204,7 @@ def build_matrix(masked_matrices,modes):
 def zscore_mag_div_matrix(mat):
     for col in xrange(mat.shape[1]):
         if col % 50000 == 0:
-            print 'x'
+            print col
         mat[:,col] = zscore(mat[:,col]) 
         mat[:,col] = mat[:,col] / np.sqrt( sum( [ x**2 for x in mat[:,col] ] ) )
     return mat
